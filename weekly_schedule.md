@@ -9,15 +9,14 @@ This document outlines the weekly milestones and core concepts for the K14 teach
 ```mermaid
 gantt
     title 5-Week Project Timeline
-    dateFormat  D
-    axisFormat %e
+    dateFormat  YYYY-MM-DD
+    axisFormat  %m-%d
     section Schedule
-    Week 1: Setup & Drafting       :active, w1, 0, 7d
-    Week 2: Verification Loop      :w2, after w1, 7d
-    Week 3: Connections & Dataset  :w3, after w2, 7d
-    Week 4: Cyber Threat & Exploit :w4, after w3, 7d
-    Week 5: Defense & Presentation :w5, after w4, 7d
-```
+    Week 1 - Setup & Drafting       :active, w1, 2024-01-01, 7d
+    Week 2 - Verification Loop      :w2, after w1, 7d
+    Week 3 - Connections & Dataset  :w3, after w2, 7d
+    Week 4 - Cyber Threat & Exploit :w4, after w3, 7d
+    Week 5 - Defense & Presentation :w5, after w4, 7d
 
 ---
 
