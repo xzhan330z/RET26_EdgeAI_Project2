@@ -17,6 +17,7 @@ gantt
     Week 3 - Connections & Dataset  :w3, after w2, 7d
     Week 4 - Cyber Threat & Exploit :w4, after w3, 7d
     Week 5 - Defense & Presentation :w5, after w4, 7d
+```
 
 ---
 
