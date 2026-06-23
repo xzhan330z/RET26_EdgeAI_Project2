@@ -2,12 +2,8 @@
 
  Tasks are layered and chained — later steps depend on data produced in earlier steps, so you cannot skip ahead or fabricate results.
 
-> **Non-negotiable ground rules:**
-> - Every written deliverable must cite your own measured numbers from that session. Writing without specific data will not be accepted.
-> - Hand-drawn artifacts (diagrams, charts, tables) must be photographed and submitted. Typed substitutes are not accepted for hand-drawn items.
-
-
-> - You must be able to explain the diagram and any works you do in the lab.
+> **Non-negotiable ground rule:**
+> - You can take help from your mentor, the internet, LLMs, or any resource, but you must fully understand what you are doing and how it works; you must be able to explain the diagrams and any work you do in the lab (no copy-pasting tasks or code without understanding).
 
 ---
 
