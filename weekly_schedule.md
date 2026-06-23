@@ -1,8 +1,5 @@
 # **NSF RET Summer Camp: 5-Week Project Weekly Schedule**
 
-This document outlines the weekly milestones and core concepts for the K14 teachers completing the **Trustless Edge-Cloud Speculative Decoding** project.
-
----
 
 ## **Weekly Overview**
 
