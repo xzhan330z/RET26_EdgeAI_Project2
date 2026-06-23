@@ -1,6 +1,6 @@
-# NSF RET 2026 — Daily Lab Deep-Dive Tasks
+# NSF RET 2026 — Daily Lab Tasks
 
-**Purpose:** These tasks are assigned into every **"Research work"** and **"Progress report"** slot in the official program schedule. Slots occupied by Dr. Chen's curriculum sessions, poster work, or microteaching preparation are marked clearly — no task is assigned to those slots. Every task is designed to fill its allocated slot (a half-day = ~3 hours, a full-day double slot = ~5–6 hours of active work). Tasks are layered and chained — later steps depend on data produced in earlier steps, so you cannot skip ahead or fabricate results.
+ Tasks are layered and chained — later steps depend on data produced in earlier steps, so you cannot skip ahead or fabricate results.
 
 > **Non-negotiable ground rules:**
 > - Every written deliverable must cite your own measured numbers from that session. Writing without specific data will not be accepted.
