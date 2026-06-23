@@ -1,6 +1,6 @@
 # EdgeAI RET Site 2026 - Lab Coverage Schedule
 
-This document tracks and schedules lab coverage for **Danish**, **Zhe**, and **Farlina** during the Summer program (June 15 – July 24, 2026).
+
 
 ## Lab Slots
 - **Morning Slot:** 9:00 AM – 12:00 PM
