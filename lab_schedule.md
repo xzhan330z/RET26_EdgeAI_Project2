@@ -5,7 +5,6 @@ This document tracks and schedules lab coverage for **Danish**, **Zhe**, and **F
 ## Lab Slots
 - **Morning Slot:** 9:00 AM – 12:00 PM
 - **Afternoon Slot:** 1:00 PM – 4:00 PM
-- **Total Slots:** 58 unique time slots (across the 6-week program, excluding holidays)
 
 
 ---
