@@ -24,9 +24,9 @@
 | Date | Day | Morning Slot (9:00 AM - 12:00 PM) | Afternoon Slot (1:00 PM - 4:00 PM) | Notes |
 | :--- | :--- | :--- | :--- | :--- |
 | June 22 | Monday | Farlina | Danish | |
-| June 23 | Tuesday | Zhe | Danish | |
+| June 23 | Tuesday | Danish | Danish | |
 | June 24 | Wednesday | Zhe | Farlina | |
-| June 25 | Thursday | Danish | Zhe | |
+| June 25 | Thursday | Zhe | Zhe | |
 | June 26 | Friday | Farlina | Zhe | |
 
 ## Week 3 (June 29 – July 3)
