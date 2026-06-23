@@ -5,9 +5,9 @@
 > **Non-negotiable ground rules:**
 > - Every written deliverable must cite your own measured numbers from that session. Writing without specific data will not be accepted.
 > - Hand-drawn artifacts (diagrams, charts, tables) must be photographed and submitted. Typed substitutes are not accepted for hand-drawn items.
-> - All peer-review items require the reviewer's **handwritten signature and the time of review**. Unsigned reviews are void.
-> - Word counts are mandatory where specified. Write the count at the bottom of the document.
-> - A **5-minute oral check-in** with the lab mentor occurs at the end of each afternoon session. You must be able to explain any number or diagram you produced. If you cannot, the deliverable does not count.
+
+
+> - You must be able to explain the diagram and any works you do in the lab.
 
 ---
 
