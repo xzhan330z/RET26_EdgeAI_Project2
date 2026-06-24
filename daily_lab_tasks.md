@@ -136,7 +136,7 @@
 
 **Part 3 — Physical Analogy Poster (90 min)**
 
-9. On a large sheet of paper (minimum A3 / 11×17 in), create a poster a school principal could read and understand. It must contain:
+9. On a sheet of paper or white board, create a poster that a school principal could read and understand. It must contain:
    - Side-by-side scale drawings of both models (make the 7B model visually 14× larger in area — calculate the correct dimensions and show that calculation on the poster)
    - Your actual RAM measurements from Part 1, integrated into the diagram
    - Your ratio calculations from Part 2 displayed prominently
