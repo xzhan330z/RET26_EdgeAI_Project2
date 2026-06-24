@@ -99,3 +99,64 @@
 > This slot is reserved for curriculum development with Dr. Lily Chen. Attend that session.
 
 ---
+
+
+### Wednesday Jun 24 — Full Day (9:00 AM – 12:00 PM + 1:00 PM – 4:00 PM)
+**Both slots: Research work ✅ — TASK ASSIGNED (full day)**
+
+#### Task: Model Scale Reality Check — Measuring What "7 Billion Parameters" Actually Means
+
+**Concept:** The numbers in AI headlines (0.5B, 7B parameters) are abstract until you measure what they cost in RAM, time, and disk space on real hardware.
+
+**Morning Block (9:00 AM – 12:00 PM)**
+
+**Part 1 — Hardware Profiling (90 min)**
+
+1. Before running anything, open Task Manager / Activity Monitor / `htop`. Screenshot baseline RAM and CPU. Label "Baseline — Nothing Running."
+2. Open VS Code. Screenshot again. Label "With Editor Open."
+3. Run `python edge_draft.py`. While it loads, screenshot. Label "During Model Load." The moment it finishes printing, screenshot again. Label "Post-Inference." You now have 4 screenshots at 4 distinct moments.
+4. Extract RAM values from all 4 screenshots into this hand-written table:
+
+| State | RAM Used (GB) | CPU % | Notes |
+|---|---|---|---|
+| Baseline | | | |
+| Editor Open | | | |
+| During Load | | | |
+| Post-Inference | | | |
+
+5. Calculate by hand: how much RAM did the 0.5B model consume at peak? (Post-Inference minus Baseline.) Show subtraction on paper.
+
+**Part 2 — Spec Sheet Research (90 min)**
+
+6. Go to the Hugging Face model card for `Qwen/Qwen2.5-0.5B-Instruct`. Without using AI, find and record: number of parameters (exact), total disk size (sum the `.safetensors` files on the Files tab), architecture type, context window length, and training data cutoff. Record the URL for each finding.
+7. Do the same for `Qwen/Qwen2.5-7B-Instruct`.
+8. Build a comparison table on paper (both models side by side). Add a third column: the ratio (7B ÷ 0.5B) for each row. Calculate all ratios by hand. Show arithmetic.
+
+**Afternoon Block (1:00 PM – 4:00 PM)**
+
+**Part 3 — Physical Analogy Poster (90 min)**
+
+9. On a large sheet of paper (minimum A3 / 11×17 in), create a poster a school principal could read and understand. It must contain:
+   - Side-by-side scale drawings of both models (make the 7B model visually 14× larger in area — calculate the correct dimensions and show that calculation on the poster)
+   - Your actual RAM measurements from Part 1, integrated into the diagram
+   - Your ratio calculations from Part 2 displayed prominently
+   - One real-world size analogy of your own invention for each model (not from the build guide)
+   - One sentence at the bottom explaining why this size difference matters for classrooms
+   Photograph your poster.
+
+**Part 4 — Discussion Questions and Peer Critique (90 min)**
+
+10. Write 5 discussion questions about model size and edge AI limitations suitable for the grade level you teach. For each question, also write: the expected student response, a common wrong answer you anticipate, and a follow-up question to redirect the wrong answer.
+11. Exchange your 5 questions with a partner who teaches a different grade level. Your partner answers your questions as if they were a student (written answers). You read their answers and write a 3-sentence response: did their answers reveal misunderstandings you did not anticipate? What would you change?
+
+**Oral Check-in (3:30 PM):** Point to any number on your poster and explain exactly where it came from — which screenshot, which calculation.
+
+**Deliverable Checklist:**
+- [ ] 4 labeled hardware screenshots
+- [ ] Hand-written RAM/CPU table with subtraction shown (photographed)
+- [ ] Spec comparison table with ratios calculated by hand (photographed)
+- [ ] Hand-made poster with scale calculation shown (photographed, min A3)
+- [ ] 5 discussion questions with expected answers, wrong answers, follow-ups (typed)
+- [ ] Partner's written student-role answers + your 3-sentence response
+
+---
