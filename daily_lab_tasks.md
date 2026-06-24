@@ -155,7 +155,7 @@
 - [ ] 4 labeled hardware screenshots
 - [ ] Hand-written RAM/CPU table with subtraction shown (photographed)
 - [ ] Spec comparison table with ratios calculated by hand (photographed)
-- [ ] Hand-made poster with scale calculation shown (photographed, min A3)
+- [ ] Hand-made poster with scale calculation shown (photographed)
 - [ ] 5 discussion questions with expected answers, wrong answers, follow-ups (typed)
 - [ ] Partner's written student-role answers + your 3-sentence response
 
