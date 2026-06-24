@@ -102,7 +102,7 @@
 
 
 ### Wednesday Jun 24 — Full Day (9:00 AM – 12:00 PM + 1:00 PM – 4:00 PM)
-**Both slots: Research work ✅ — TASK ASSIGNED (full day)**
+
 
 #### Task: Model Scale Reality Check — Measuring What "7 Billion Parameters" Actually Means
 
