@@ -160,3 +160,78 @@
 - [ ] Partner's written student-role answers + your 3-sentence response
 
 ---
+
+
+
+
+### Thursday Jun 25 — Morning (9:00 AM – 12:00 PM)
+**Slot: Progress report ✅ — TASK ASSIGNED**
+
+#### Task: Latency Laboratory — Rigorous Timing on Real Hardware *(Part 1 of 2)*
+
+**Concept:** Performance is not a single number — it is a distribution with variance and environmental dependencies. Today you run a proper timing experiment under two conditions and begin your statistical analysis.
+
+**Part 1 — Controlled Timing Experiment, Condition A: Normal Load (60 min)**
+
+Keep all your usual applications open (browser with multiple tabs, editor, background apps). This is "Condition A."
+
+1. Run `edge_draft.py` 20 times. Before each run, write the run number and current time in a hand-written log. Use a physical stopwatch: start when you press Enter, stop when the last token ID appears. Record to the nearest tenth of a second. If you missed the timing on a run, mark it void and repeat.
+2. After 20 runs, circle any outliers (runs that took more than 2× the typical time). Note beside each what was happening on screen at that moment.
+
+**Part 2 — Condition B: Minimal Load (60 min)**
+
+3. Close every application except the terminal. Disable WiFi. This is "Condition B." Repeat the exact same 20-run experiment. Record in a separate hand-written log.
+
+**Part 3 — Statistical Analysis by Hand (60 min)**
+
+4. For Condition A, order your 20 measurements smallest to largest on a new sheet of paper.
+5. Calculate for Condition A (show all arithmetic):
+   - Mean, Median, Minimum, Maximum, Range
+   - Standard deviation: √(Σ(xᵢ − mean)² / n) — calculate every term individually on paper
+6. Calculate the same 5 statistics for Condition B. Show all arithmetic.
+7. Draw a hand-made stem-and-leaf plot for Condition A. Label stems and leaves correctly.
+
+**Oral Check-in (end of morning):** Explain your standard deviation calculation for Condition A by pointing to the arithmetic on your paper.
+
+**Deliverable Checklist:**
+- [ ] Hand-written timing log for Condition A (20 runs, circled outliers with notes)
+- [ ] Hand-written timing log for Condition B (20 runs)
+- [ ] Full statistical calculations for both conditions (paper, photographed)
+- [ ] Hand-drawn stem-and-leaf plot for Condition A (photographed)
+
+---
+
+### Thursday Jun 25 — Afternoon (1:00 PM – 4:00 PM)
+**Slot: Research work ✅ — TASK ASSIGNED**
+
+#### Task: Latency Laboratory — Graphing, Analysis, and Peer Comparison *(Part 2 of 2, continues Jun 25 Morning)*
+
+**This session requires your two timing logs and statistical calculations from this morning.**
+
+**Part 4 — Comparative Graphing (60 min)**
+
+1. On a single sheet of graph paper, draw two overlapping box-and-whisker plots — one for Condition A and one for Condition B. Label every component: minimum whisker, Q1, median line, Q3, maximum whisker, and outlier dots. Use different colors or patterns to distinguish the two.
+
+**Part 5 — Written Analysis (90 min)**
+
+2. Write a typed analysis paragraph (200–250 words) that must include:
+   - Your actual mean and standard deviation for both conditions (use your numbers from this morning)
+   - Whether the difference between conditions is meaningful or within noise (your judgment, justified)
+   - One sentence explaining what "variance" means for a classroom AI tool that students are waiting on
+   - One prediction: if 30 students all ran this simultaneously on the same network, what would happen to the distribution and why?
+   This paragraph cannot be written without your specific numbers. Word count at bottom.
+3. Write a second paragraph (100–150 words) predicting what the distribution would look like on: (a) a 5-year-old budget laptop, (b) a new MacBook Pro M3. Ground your prediction in the RAM and CPU specs you researched on Jun 24. Reference that data explicitly ("From my Jun 24 spec table…").
+
+**Part 6 — Peer Data Comparison (30 min)**
+
+4. Find a partner with different hardware. Share your mean and standard deviation only (not your raw data). Together, calculate the difference in means and discuss: how many extra seconds per inference does the slower machine add? Write a 4-sentence joint conclusion that you both sign.
+
+**Oral Check-in (3:30 PM):** The mentor picks one number from your box-and-whisker plot and asks where it came from in your raw data.
+
+**Deliverable Checklist:**
+- [ ] Hand-drawn dual box-and-whisker plot (labeled, both conditions) (photographed)
+- [ ] Typed analysis paragraph (200–250 words, word count at bottom)
+- [ ] Typed prediction paragraph referencing Jun 24 spec data (100–150 words)
+- [ ] Jointly signed 4-sentence peer comparison conclusion
+
+---
