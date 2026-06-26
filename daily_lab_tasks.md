@@ -165,7 +165,7 @@
 
 
 ### Thursday Jun 25 — Morning (9:00 AM – 12:00 PM)
-**Slot: Progress report ✅ — TASK ASSIGNED**
+
 
 #### Task: Latency Laboratory — Rigorous Timing on Real Hardware *(Part 1 of 2)*
 
@@ -233,5 +233,180 @@ Keep all your usual applications open (browser with multiple tabs, editor, backg
 - [ ] Typed analysis paragraph (200–250 words, word count at bottom)
 - [ ] Typed prediction paragraph referencing Jun 24 spec data (100–150 words)
 - [ ] Jointly signed 4-sentence peer comparison conclusion
+
+---
+
+
+### Friday Jun 26 — Morning (9:00 AM – 12:00 PM)
+**Slot: Research work ✅ — TASK ASSIGNED**
+
+#### Task: The Edge AI Glossary — Definitions, Connections, and Teaching It Cold *(Part 1 of 2)*
+
+**Concept:** Technical vocabulary is useless if you can recite definitions but cannot use them fluidly. Today you build your understanding of 12 core terms through three layers: define alone, self-assess against the guide, and map connections visually.
+
+**Part 1 — First Draft Definitions, Alone and Unaided (90 min)**
+
+All notes closed. No guide open. No browser. For each of the 12 terms below, write on paper:
+- A definition in your own words (minimum 3 sentences)
+- One concrete example from your own experience running the code this week (must name a specific file, output, or measurement)
+- One analogy from your life outside technology
+
+Terms: Autoregressive decoding · Token ID · Small Language Model (SLM) · Large Language Model (LLM) · Edge device · Inference · Model parameters (weights) · Virtual environment (`venv`) · Draft model · Target model · Acceptance bitmap · Network latency
+
+If you finish in under 60 minutes, your definitions are too short.
+
+**Part 2 — Self-Assessment Against the Build Guide (60 min)**
+
+Open the build guide. For each definition:
+- Underline every part that is accurate and consistent with the guide
+- Put a "?" next to anything you are now unsure about
+- Put a cross next to anything that was outright wrong
+- Write a correction in a different ink color for every crossed item
+
+Count how many definitions had at least one correction. Write this number prominently at the top — this is your "Round 1 accuracy score."
+
+**Part 3 — Concept Map (30 min)**
+
+On a large blank sheet of paper, arrange all 12 terms as nodes. Draw arrows between connected terms. Every arrow must be labeled with a verb phrase (e.g., "Token ID → [is consumed by] → Draft Model"). You must have at least 18 labeled arrows. No isolated nodes allowed. Photograph your map — you will reference it on Jun 29.
+
+**Oral Check-in (end of morning):** The mentor will point to one arrow on your concept map and ask you to explain the relationship in 60 seconds without reading from the paper.
+
+**Deliverable Checklist:**
+- [ ] 12 hand-written first-draft definitions with examples and analogies (photographed)
+- [ ] Self-assessed definitions with underlines, question marks, crosses, corrections in different ink (photographed)
+- [ ] Round 1 accuracy score written at top
+- [ ] Concept map with 18+ labeled arrows (photographed)
+
+---
+
+### Friday Jun 26 — Afternoon (1:00 PM – 4:00 PM)
+**Slot: Research work ✅ — TASK ASSIGNED**
+
+#### Task: The Edge AI Glossary — Peer Challenge and Teaching Cold *(Part 2 of 2, continues Jun 26 Morning)*
+
+**This session requires your definition sheets and concept map from this morning.**
+
+**Part 4 — Peer Definition Challenge (75 min)**
+
+1. Exchange your definition sheets (before corrections) with a partner. Your partner reads each definition and writes for each one:
+   - One sentence: "I think this is [correct / partially correct / incorrect] because…"
+   - One follow-up question they still have about that term
+   Partner signs and timestamps the review sheet.
+2. For any term where your partner disagreed with your own self-assessment, write a 2-sentence justification or concession.
+
+**Part 5 — Teach It Cold (75 min)**
+
+3. Find someone who has not been your usual partner. You have 10 minutes to verbally explain "speculative decoding" using only your 12 terms and your concept map as a visual aid. Your listener rates you immediately after:
+
+| Criterion | Score 1–5 |
+|---|---|
+| Used all key terms correctly | |
+| Explanation was logically ordered | |
+| Could follow it without the build guide | |
+| Would be able to re-explain it to someone else | |
+
+The listener writes one specific improvement suggestion and signs the rating sheet.
+
+4. Rewrite your definition of "autoregressive decoding" incorporating all corrections and feedback from today. Final version must be at least 6 sentences and must cite your specific timing data from Jun 25 as a concrete example.
+
+**Oral Check-in (3:30 PM):** The mentor reads one of your original wrong definitions (a crossed item) and asks you to state the correction and explain why you misunderstood it.
+
+**Deliverable Checklist:**
+- [ ] Partner's signed and timestamped review sheet
+- [ ] Your typed justifications/concessions for disputed terms
+- [ ] Listener's signed rating sheet
+- [ ] Final rewritten "autoregressive decoding" definition (typed, 6+ sentences, citing Jun 25 data)
+
+---
+
+## WEEK 3 — Research · Jun 29 – Jul 3
+
+---
+
+### Monday Jun 29 — Morning (9:00 AM – 12:00 PM)
+**Slot: Research work ✅ — TASK ASSIGNED**
+
+#### Task: Bitmap Forensics — Tracing Verification Logic Across Seven Scenarios *(Part 1 of 2)*
+
+**Concept:** Understanding the acceptance bitmap deeply means predicting, tracing, and explaining it for any input — not just the example in the guide.
+
+**Part 1 — Run and Document the Baseline (30 min)**
+
+1. Run `simulate_verify.py` as provided. Screenshot the output. Copy every printed line by hand into your log — do not just save the screenshot; copying forces you to read every character.
+2. Read the source file top to bottom. On paper, list every variable the script declares, its initial value, and its data type. This is your "variable inventory."
+
+**Part 2 — Hand-Trace Four Scenarios (2.5 hours)**
+
+For each scenario: (a) trace through the verification loop step by step on paper, writing every variable's value at every iteration; (b) predict the output bitmap before running anything; (c) edit the script and run it; (d) screenshot the actual output; (e) compare your prediction to the actual result and explain any discrepancy in one sentence.
+
+**Scenario 1 (Warm-up):**
+- Draft: `[42, 17, 99, 55, 23]` | Target: `[42, 17, 88, 55, 23]`
+
+**Scenario 2 (First token wrong):**
+- Draft: `[42, 17, 99, 55, 23]` | Target: `[99, 17, 99, 55, 23]`
+
+**Scenario 3 (All correct):**
+- Draft: `[10, 20, 30, 40, 50]` | Target: `[10, 20, 30, 40, 50]`
+
+**Scenario 4 (All wrong):**
+- Draft: `[10, 20, 30, 40, 50]` | Target: `[99, 99, 99, 99, 99]`
+
+**Oral Check-in (end of morning):** The mentor gives you a new scenario not listed above and asks you to predict the bitmap verbally in 90 seconds.
+
+**Deliverable Checklist:**
+- [ ] Screenshot of baseline `simulate_verify.py` output
+- [ ] Hand-written variable inventory (photographed)
+- [ ] 4 hand-traced scenario tables with predicted and actual bitmaps (photographed)
+- [ ] 4 comparison sentences
+- [ ] 4 screenshots of modified script outputs (labeled)
+
+---
+
+### Monday Jun 29 — Afternoon (1:00 PM – 4:00 PM)
+**Slot: Research work ✅ — TASK ASSIGNED**
+
+#### Task: Bitmap Forensics — Pattern Analysis, Cost, and Flowchart *(Part 2 of 2, continues Jun 29 Morning)*
+
+**This session requires your 4 traced scenario tables from this morning.**
+
+**Part 3 — Three More Scenarios (75 min)**
+
+Continue the same trace-predict-run-compare process for three more scenarios:
+
+**Scenario 5 (Last token only wrong):**
+- Draft: `[10, 20, 30, 40, 50]` | Target: `[10, 20, 30, 40, 99]`
+
+**Scenario 6 (Alternating correct/wrong):**
+- Draft: `[10, 20, 30, 40, 50]` | Target: `[10, 99, 30, 99, 50]`
+
+**Scenario 7 (Design your own — exactly 3 accepted):**
+- Choose draft and target tokens yourself such that the output is exactly `[1, 1, 1, 0, 0]`. Explain in writing: how did you choose these values? Could there be multiple valid answers?
+
+**Part 4 — Pattern Summary and Cost Analysis (75 min)**
+
+1. Lay out all 7 scenario results side by side. Fill in this summary table by hand:
+
+| Scenario | # Tokens Accepted | Position of First Rejection | Later tokens checked? | Efficient? (Y/N) |
+|---|---|---|---|---|
+
+2. Write a general rule paragraph: one paragraph that could replace reading the code. Someone reading it should be able to predict the output bitmap for any scenario without seeing the script. It must account for cascade rejection.
+3. Using Scenarios 2 vs. 5: if the GPU server charges $0.001 per forward pass token and runs 100 requests/hour, how much does cascade rejection cost per hour in each scenario? Show all arithmetic on paper.
+
+**Part 5 — Flowchart and Peer Trace (30 min)**
+
+4. Draw a formal flowchart of the verification loop: start node, input box, loop counter, decision diamond (accept/reject), cascade stop branch, end node with output bitmap.
+5. Give your flowchart to a partner — without showing them the code. They trace Scenario 6 through your flowchart and write down the bitmap they predict. If their prediction is wrong, identify which box confused them and redraw that section. Partner signs.
+
+**Oral Check-in (3:30 PM):** The mentor picks one cell from your summary table and asks you to explain what it means for system efficiency.
+
+**Deliverable Checklist:**
+- [ ] 3 more hand-traced scenario tables (Scenarios 5–7) with predictions and actuals (photographed)
+- [ ] 3 more screenshots of modified script outputs
+- [ ] Scenario 7 design explanation (typed)
+- [ ] Hand-written 7-row summary table (photographed)
+- [ ] Typed general rule paragraph
+- [ ] GPU cost arithmetic on paper (photographed)
+- [ ] Hand-drawn flowchart (photographed)
+- [ ] Partner's signed trace result on your flowchart
 
 ---
