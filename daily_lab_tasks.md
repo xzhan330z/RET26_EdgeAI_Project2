@@ -410,3 +410,169 @@ Continue the same trace-predict-run-compare process for three more scenarios:
 - [ ] Partner's signed trace result on your flowchart
 
 ---
+
+
+### Tuesday Jun 30 — Morning (9:00 AM – 12:00 PM)
+**Slot: Research work ✅ — TASK ASSIGNED**
+
+#### Task: Server Archaeology — Mapping a Machine You Have Never Touched Before *(Part 1 of 2)*
+
+**Concept:** Professionals read a machine before they write to it. Today you document what the server is, what is running on it, and how the project files fit into it — before running a single project script.
+
+**Part 1 — First Contact and System Profile (90 min)**
+
+1. SSH into the GPU server. Run each command below one at a time. For each, write the exact command, the full output (by hand or screenshot), and one sentence explaining what it tells you:
+   - `uname -a` | `lscpu | head -20` | `free -h` | `df -h` | `who` | `uptime` | `nvidia-smi`
+
+2. From the `nvidia-smi` output, fill in this hand-written table:
+
+| Property | Value |
+|---|---|
+| GPU Model | |
+| Total VRAM | |
+| VRAM Currently Used | |
+| GPU Utilization % | |
+| Driver Version | |
+| CUDA Version | |
+
+**Part 2 — Process and File Archaeology (90 min)**
+
+3. Run `ps aux | grep python`. Screenshot. Are any Python processes already running? Write down their PIDs and what you think they are doing.
+4. Navigate to the project directory. Run `ls -lh`. Record the file sizes and last-modified timestamps of every `.py` file in a hand-written table.
+5. Run `which python3` and `python3 --version`. Record both.
+6. Run `pip3 show torch`. Record the "Location" line. Navigate there and run `ls | wc -l`. Record the package count.
+
+**Oral Check-in (end of morning):** The mentor asks: "What is the current VRAM usage on the server and why?"
+
+**Deliverable Checklist:**
+- [ ] 7 command outputs with one-sentence explanations (hand-written or screenshot)
+- [ ] Hand-written `nvidia-smi` table (photographed)
+- [ ] `ps aux` screenshot + written process notes
+- [ ] Hand-written `ls -lh` file table (photographed)
+- [ ] Python path and version recorded
+
+---
+
+### Tuesday Jun 30 — Afternoon (1:00 PM – 4:00 PM)
+**Slot: Research work ✅ — TASK ASSIGNED**
+
+#### Task: Server Archaeology — Reading the Script, Starting the Server, Reflecting *(Part 2 of 2, continues Jun 30 Morning)*
+
+**This session requires your system profile data from this morning.**
+
+**Part 3 — Read the Server Script Before Running It (75 min)**
+
+1. Open `server.py` in `nano` or `vim` (terminal only — no VS Code remote). Read it top to bottom. Answer on paper in full sentences:
+   - What Python libraries does it import? List every import.
+   - What port does it listen on? What variable stores this?
+   - What is the name of the route it exposes, and what HTTP method does it accept?
+   - What fields does it expect in the incoming JSON body?
+   - What does it return on success?
+   - What would happen if the JSON is missing a required field?
+
+2. Draw a sequence diagram on paper: your laptop terminal → network → server port → FastAPI route → model → response → back to laptop. Label every arrow with: (a) direction, (b) data type/format, (c) estimated time for that step.
+
+**Part 4 — Start the Server and Observe (75 min)**
+
+3. Start `server.py`. While it loads, copy every terminal output line by hand. Stopwatch the startup time. Record it.
+4. Run `nvidia-smi` immediately after ready. Fill in the `nvidia-smi` table again. Calculate VRAM delta (now minus your baseline from Jun 29 Morning's table).
+5. From your laptop, send one manual `curl` request. Record: exact command, exact raw JSON response, and round-trip time (stopwatch).
+
+**Part 5 — Reflection Journal (30 min)**
+
+6. Write a structured journal entry (250–300 words) covering:
+   - What was most disorienting about working on a machine you cannot see?
+   - What information from today would you include in a student SSH-lab handout?
+   - If two students tried to load the 7B model simultaneously, what would happen? Use your VRAM numbers.
+   Word count at bottom.
+
+**Oral Check-in (3:30 PM):** Point to your sequence diagram. The mentor asks you to explain one specific arrow.
+
+**Deliverable Checklist:**
+- [ ] Written answers to 6 server script questions (full sentences, paper)
+- [ ] Hand-drawn sequence diagram with labeled arrows (photographed)
+- [ ] Hand-written startup log lines + startup time
+- [ ] Second `nvidia-smi` table + VRAM delta calculation (paper)
+- [ ] `curl` command + raw response + round-trip time
+- [ ] Typed journal entry (250–300 words, word count at bottom)
+
+---
+
+### Wednesday Jul 1 — Morning (9:00 AM – 12:00 PM)
+**Slot: Research work ✅ — TASK ASSIGNED**
+
+#### Task: HTTP Anatomy Lab — Every Byte Between Your Laptop and the Server *(Part 1 of 2)*
+
+**Concept:** Every request has a precise structure — headers, body, status codes — and every byte can be read, modified, or blocked by anyone in between.
+
+**Part 1 — Manual curl Experiments (90 min)**
+
+Ensure `server.py` is running on the GPU server.
+
+1. Construct and send a valid POST request using `curl` only (no Python). Record the exact command. Screenshot the response. This is your "golden request."
+2. Send 6 deliberately broken requests. For each one, record: the modified command, the full response, and one sentence explaining why it broke:
+   - Missing `Content-Type: application/json` header
+   - Empty body `{}`
+   - Correct field name but string value: `{"draft_tokens": "hello"}`
+   - Correct field with empty list: `{"draft_tokens": []}`
+   - Wrong port (try port 8002)
+   - GET request instead of POST to the same URL
+3. After all 6, write a one-paragraph "API contract" in plain English — the exact requirements a request must satisfy to receive a valid response.
+
+**Part 2 — Request Anatomy Diagram (90 min)**
+
+4. On a large sheet of paper, draw the full anatomy of your "golden request": HTTP method, URL broken into protocol/host/port/path, all headers with what each means, body with format/field name/field value/data type.
+5. Draw the full anatomy of the response: status code and meaning, response headers, response body with all fields.
+Both diagrams must use your actual values, not placeholders.
+
+**Oral Check-in (end of morning):** The mentor gives you a `curl` command with a deliberate error. You identify the error and explain what the server will return.
+
+**Deliverable Checklist:**
+- [ ] 7 `curl` commands (1 golden + 6 broken) with screenshots and explanations
+- [ ] Typed "API contract" paragraph
+- [ ] Hand-drawn request anatomy diagram (photographed)
+- [ ] Hand-drawn response anatomy diagram (photographed)
+
+---
+
+### Wednesday Jul 1 — Afternoon (1:00 PM – 4:00 PM)
+**Slot: Research work ✅ — TASK ASSIGNED**
+
+#### Task: HTTP Anatomy Lab — Comparison Table, Security Connection, Field Guide *(Part 2 of 2, continues Jul 1 Morning)*
+
+**This session requires your golden request, broken request log, and anatomy diagrams from this morning.**
+
+**Part 3 — GET vs. POST Comparison and Security Connection (90 min)**
+
+1. Research HTTP GET vs. POST using MDN Web Docs or RFC 7231 (not AI). Fill in this comparison table on paper with at least 2 sentences per cell:
+
+| Property | HTTP GET | HTTP POST |
+|---|---|---|
+| Where is the data? | | |
+| Length limit? | | |
+| Cached by browser? | | |
+| Visible in server logs? | | |
+| Safe for sensitive data? | | |
+| Our project uses which? Why? | | |
+
+2. Write a paragraph (150–200 words): *If an attacker was sitting on the same WiFi network as a student sending requests to the GPU server, exactly what could they read from the traffic? What could they change? What could they not change without detection (in the current non-secure system)?* Reference specific fields from your anatomy diagrams. Word count at bottom.
+
+**Part 4 — HTTP Field Guide and Partner Test (90 min)**
+
+3. Create a 1-page hand-drawn "HTTP Field Guide" — a reference card a student could keep at their desk — containing:
+   - A miniature anatomy diagram (condensed from this morning)
+   - The 6 broken-request scenarios as a "common mistakes" list with the error each causes
+   - Your API contract paragraph condensed to bullet points
+   - One "why this matters for security" callout box
+
+4. Exchange your Field Guide with a partner. Your partner attempts to construct a valid `curl` request from scratch using only your Field Guide — no other documentation, no previous notes. Screenshot their terminal showing whether it worked. If it failed, identify which part of your Field Guide was unclear. Write a correction.
+
+**Oral Check-in (3:30 PM):** The mentor asks: "What would an attacker see if they intercepted your golden request on the network right now?"
+
+**Deliverable Checklist:**
+- [ ] Hand-written GET vs. POST comparison table (photographed)
+- [ ] Typed security paragraph (150–200 words, word count at bottom)
+- [ ] Hand-drawn HTTP Field Guide (photographed)
+- [ ] Partner's `curl` test screenshot + your written correction if needed
+
+---
