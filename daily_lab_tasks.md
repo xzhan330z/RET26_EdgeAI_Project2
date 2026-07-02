@@ -576,3 +576,252 @@ Both diagrams must use your actual values, not placeholders.
 - [ ] Partner's `curl` test screenshot + your written correction if needed
 
 ---
+
+
+
+### Thursday Jul 2 — Morning (9:00 AM – 12:00 PM)
+**Slot: Progress report ✅ — TASK ASSIGNED**
+
+#### Task: GPU Memory Observatory — Tracking the True Cost of Model Inference *(Part 1 of 2)*
+
+**Concept:** VRAM is the scarcest resource in AI systems. Today you measure, calculate, and project VRAM consumption to answer a real question: how many simultaneous users can this server actually support?
+
+**Part 1 — Controlled Loading Experiment (90 min)**
+
+1. Confirm the server is stopped. Run `nvidia-smi`. Record baseline VRAM.
+2. Start `server.py`. Stopwatch from first output line to "ready." Run `nvidia-smi` the moment it says ready. Calculate VRAM consumed (current − baseline).
+3. Send 1 `curl` request. During the response (within 1 second of sending — use a helper), run `nvidia-smi`. Does VRAM spike during inference or is it constant? Record and describe.
+4. Kill the server. Wait 10 seconds. Run `nvidia-smi`. Has it returned to baseline? Measure how long it takes with your stopwatch.
+5. Restart the server 3 more times (4 restarts total). Record startup time and post-load VRAM each time:
+
+| Restart # | Time Since Kill (sec) | Startup Time (sec) | VRAM After Load (GB) |
+|---|---|---|---|
+| 1 | N/A | | |
+| 2 | | | |
+| 3 | | | |
+| 4 | | | |
+
+Is startup time faster on subsequent runs? Write a 3-sentence hypothesis.
+
+**Part 2 — Disk-to-VRAM Transfer Analysis (90 min)**
+
+6. Navigate to the model weights directory on the server. Run `ls -lh *.safetensors`. Record each file size and sum the total by hand. Show the addition.
+7. Compare total disk size to VRAM consumption. Write a paragraph explaining why they may differ — look this up in the Hugging Face model card or documentation, not AI. Cite your source.
+8. Draw a diagram on paper: SSD → RAM → GPU VRAM. Label each stage with the file format, approximate size from your measurements, and the bottleneck at each transfer.
+
+**Oral Check-in (end of morning):** "If a student ran two inference requests simultaneously, what would happen to VRAM? Show me the arithmetic."
+
+**Deliverable Checklist:**
+- [ ] 4 `nvidia-smi` screenshots (baseline, post-load, during inference, after kill)
+- [ ] 4-row startup timing table with 3-sentence hypothesis (paper, photographed)
+- [ ] `ls -lh` output with total disk size summed by hand (paper)
+- [ ] Typed disk-vs-VRAM explanation paragraph (with source cited)
+- [ ] Hand-drawn SSD → RAM → VRAM diagram with sizes labeled (photographed)
+
+---
+
+### Thursday Jul 2 — Afternoon (1:00 PM – 4:00 PM)
+**Slot: Draft lessons (section 4) + section 5 (independent) + Mid-program survey ❌ — NO TASK ASSIGNED**
+
+> This slot is reserved for drafting lesson sections 4 and 5 (independent) and completing the mid-program survey. Complete those program requirements.
+
+---
+
+### Friday Jul 3 — Full Day
+**Slot: No program — Independence Day (UNR closed) ❌ — NO TASK ASSIGNED**
+
+> UNR is closed. No lab today.
+
+---
+
+## WEEK 4 — Research · Jul 6–10
+
+---
+
+### Monday Jul 6 — Morning (9:00 AM – 12:00 PM)
+**Slot: Research work ✅ — TASK ASSIGNED**
+
+#### Task: GPU Memory Observatory — Capacity Planning and Comparison *(Part 2 of 2, continues Jul 2 Morning)*
+
+**This session requires your VRAM measurements and disk-size data from Jul 2 Morning.**
+
+**Part 3 — Capacity Planning Calculation (90 min)**
+
+1. Using your measured VRAM consumption per model load, calculate (show all arithmetic on paper):
+   - How many simultaneous 7B model instances could this GPU support? (Total VRAM ÷ VRAM per instance)
+   - If a school district deployed this system for 30 teachers simultaneously, how many GPU servers would they need?
+   - If each GPU server costs $3.50/hour on a cloud provider, what is the monthly cost for that district assuming 6 hours/school day, 20 days/month?
+
+2. Write a 1-paragraph "Budget Memo" (150–200 words) addressed to a fictional school district CTO explaining the infrastructure cost to run this system at scale. Use your actual calculated numbers. Word count at bottom.
+
+**Part 4 — Full Comparison Table (90 min)**
+
+3. Go back to your Jun 24 RAM measurements for the 0.5B model. Build a final side-by-side comparison table on paper using real data from Jun 24 and today:
+
+| Metric | 0.5B on Laptop | 7B on GPU Server | Ratio |
+|---|---|---|---|
+| Load time (seconds) | | | |
+| Memory consumed (GB) | | | |
+| Memory available on device (GB) | | | |
+| % of device memory used | | | |
+| Cost per hour (estimate) | | | |
+
+Calculate all ratios by hand.
+
+4. Write a typed 4-sentence conclusion: *What did these measurements teach you about why speculative decoding is architecturally necessary, rather than just a nice optimization?* Reference at least 3 specific numbers from your table.
+
+**Oral Check-in (end of morning):** Point to any ratio in your comparison table and trace it back to the two raw measurements that produced it.
+
+**Deliverable Checklist:**
+- [ ] 3 capacity planning calculations shown on paper (photographed)
+- [ ] Typed Budget Memo (150–200 words, word count at bottom)
+- [ ] Final 5-row comparison table from real data (paper, photographed)
+- [ ] Typed 4-sentence conclusion citing 3 specific numbers
+
+---
+
+### Monday Jul 6 — Afternoon (1:00 PM – 4:00 PM)
+**Slot: Research work ✅ — TASK ASSIGNED**
+
+#### Task: Dataset Archaeology — Reading, Auditing, and Extending ShareGPT *(Part 1 of 2)*
+
+**Concept:** A benchmark is only as good as its data. Today you read the dataset the way a researcher would — by hand, counting, reading, and critiquing — not by running it.
+
+**Part 1 — Raw File Census (90 min)**
+
+Open `sharegpt_subset.json` in a plain text editor only. No code.
+
+1. Count by hand: how many top-level conversations are in the file? Write your counting method.
+2. For each conversation, count the message turns. Total turns across all conversations? Average turns per conversation? Show the division.
+3. For each conversation, hand-write the first 20 words of the human prompt into your log. Do not paste — write it out.
+4. Fill in this table for every conversation:
+
+| # | First 5 Words | Your Topic Label | Length (S/M/L) | Conversational or Factual? |
+|---|---|---|---|---|
+
+**Part 2 — Depth Analysis of Three Conversations (90 min)**
+
+5. Choose the longest, shortest, and one in the middle. For each, write a paragraph (100–150 words) describing: what the human was trying to accomplish, how the AI response would typically be structured, and whether this is the kind of question a K-12 student or teacher would realistically ask.
+
+**Oral Check-in (end of afternoon):** The mentor picks one conversation from your table. You explain its topic and why you labeled its length as S, M, or L.
+
+**Deliverable Checklist:**
+- [ ] Hand-written conversation count with method shown
+- [ ] Turn tally with total and average calculated (paper)
+- [ ] Hand-written first 20 words of each prompt
+- [ ] Full 15-row table (paper, photographed)
+- [ ] 3 typed conversation-analysis paragraphs (100–150 words each)
+
+---
+
+### Tuesday Jul 7 — Morning (9:00 AM – 12:00 PM)
+**Slot: Research work ✅ — TASK ASSIGNED**
+
+#### Task: Dataset Archaeology — Critical Audit and Benchmark Extension *(Part 2 of 2, continues Jul 6 Afternoon)*
+
+**This session requires your 15-row table and conversation analyses from yesterday afternoon.**
+
+**Part 3 — Critical Audit (60 min)**
+
+1. Write a structured critique (250–300 words) of the dataset addressing:
+   - What subjects or domains are over-represented?
+   - What subjects are missing entirely?
+   - What grade levels does the language suit?
+   - Could any prompt cause a problem if an AI gave a wrong answer to a student?
+   - Is 15 prompts sufficient for a production classroom AI benchmark? What number would you use and why?
+   Word count at bottom.
+
+**Part 4 — Design Your Own Benchmark Extension (120 min)**
+
+2. Write 10 original prompts to extend this benchmark for K-12 classroom AI use. Rules:
+   - Each prompt must come from a subject or grade level you actually teach
+   - No two prompts from the same topic
+   - At least 3 must involve numbers, data, or calculations
+   - At least 2 must be ambiguous (the "right" answer depends on context)
+   - At least 2 must be the kind a struggling student might write (incomplete, vague, or imperfect grammar — real students write like that)
+
+3. Write each prompt on paper first, then type in valid JSON format matching the file's exact structure. For each prompt, write in a separate section: why you chose it, what a correct AI response would include, and what a dangerously wrong response might look like.
+
+4. Exchange your 10 prompts with a partner. They write for each: "Accepted as-is" or "Needs revision: [reason]." Partner signs and timestamps. Revise any flagged prompt and note what you changed.
+
+**Oral Check-in (end of morning):** The mentor picks one of your 10 prompts and asks: "Why would a wrong AI response to this specific prompt be harmful in a classroom?"
+
+**Deliverable Checklist:**
+- [ ] Typed critical audit (250–300 words, word count at bottom)
+- [ ] 10 prompts hand-written first, then typed in JSON format
+- [ ] Typed justification + correct answer + wrong answer for each prompt
+- [ ] Partner's signed and timestamped review
+- [ ] Your revision notes for any flagged prompts
+
+---
+
+### Tuesday Jul 7 — Afternoon (1:00 PM – 4:00 PM)
+**Slot: Research work ✅ — TASK ASSIGNED**
+
+#### Task: Benchmark Interpretation Lab — Making Numbers Tell a Story *(Part 1 of 2)*
+
+**Concept:** Running a benchmark is easy. Interpreting the output rigorously — with appropriate uncertainty — is a professional skill.
+
+**Part 1 — Three Benchmark Runs (90 min)**
+
+1. Run `benchmark.py` to completion. Save output as `benchmark_results_run1.txt`. Screenshot terminal and file.
+2. Run again immediately, save as `run2.txt`. Screenshot.
+3. Wait 10 minutes (let server idle). Run again, save as `run3.txt`. Screenshot.
+4. For all 15 prompts, extract latency and acceptance rate from all 3 runs into a hand-written table (45 rows: 15 prompts × 3 runs):
+
+| Prompt # | Run1 Latency | Run2 Latency | Run3 Latency | Run1 Acc. | Run2 Acc. | Run3 Acc. |
+|---|---|---|---|---|---|---|
+
+**Part 2 — Statistical Summary (90 min)**
+
+5. For each of the 15 prompts, calculate by hand (show arithmetic):
+   - Mean latency across 3 runs
+   - Mean acceptance rate across 3 runs
+   - Range of acceptance rate (max − min)
+
+6. Which prompt has the highest variance in acceptance rate? Which has the lowest? Write one sentence about each explaining why.
+
+**Oral Check-in (end of afternoon):** The mentor picks one row from your 45-row table and asks you to locate it in the saved benchmark text file.
+
+**Deliverable Checklist:**
+- [ ] 3 benchmark run screenshots and saved text files
+- [ ] 45-row hand-written data table (photographed)
+- [ ] Mean and range calculations for all 15 prompts (paper, arithmetic shown)
+- [ ] 2 typed sentences on highest/lowest variance prompts
+
+---
+
+### Wednesday Jul 8 — Morning (9:00 AM – 12:00 PM)
+**Slot: Research work ✅ — TASK ASSIGNED**
+
+#### Task: Benchmark Interpretation Lab — Visualization and Honest Reporting *(Part 2 of 2, continues Jul 7 Afternoon)*
+
+**This session requires your 45-row data table and statistical calculations from yesterday afternoon.**
+
+**Part 3 — Hand-Drawn Visualizations (90 min)**
+
+1. Draw a scatter plot on graph paper: X-axis = mean latency, Y-axis = mean acceptance rate. Plot all 15 data points using your calculated means. Label each point with a 3-word prompt label. Use a ruler.
+2. Draw a horizontal bar chart showing the acceptance rate range (max − min) for each of the 15 prompts, ordered from most variable to least variable.
+3. Write a 3-sentence observation: do prompts with higher latency tend to have higher or lower acceptance rates? Is there a cluster?
+
+**Part 4 — Results Section and Peer Cross-Examination (90 min)**
+
+4. Write a typed "Results Section" (300–400 words) as if this were a research paper. It must:
+   - Report key statistics with actual numbers
+   - Acknowledge limitations (only 3 runs, 15 prompts, one hardware configuration)
+   - Avoid over-claiming ("the system is fast" → "for these 15 prompts on this hardware, median latency was X seconds")
+   - Include one finding that surprised you and one that confirmed your hypothesis
+   Word count at bottom.
+
+5. Exchange with a partner. Your partner circles every claim not supported by a specific number, and every number not traceable to a specific table row. You do the same for theirs. Return and revise.
+
+**Oral Check-in (end of morning):** The mentor points to one data point on your scatter plot and asks you to trace it back to the raw benchmark run that produced it.
+
+**Deliverable Checklist:**
+- [ ] Hand-drawn scatter plot (labeled, ruler used) (photographed)
+- [ ] Hand-drawn horizontal bar chart (labeled) (photographed)
+- [ ] Typed 3-sentence observation
+- [ ] Typed Results Section (300–400 words, word count at bottom)
+- [ ] Partner's markup of your Results Section + your revision
+
+---
