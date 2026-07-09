@@ -825,3 +825,360 @@ Open `sharegpt_subset.json` in a plain text editor only. No code.
 - [ ] Partner's markup of your Results Section + your revision
 
 ---
+
+### Wednesday Jul 8 — Afternoon (1:00 PM – 4:00 PM)
+**Slot: Research work ✅ — TASK ASSIGNED**
+
+#### Task: Network Path Forensics — Tracing Every Hop Between Your Laptop and the Server
+
+**Concept:** The network between your laptop and the GPU server is a chain of routers, switches, and firewalls, each adding delay. Today you map that chain and connect it to your benchmark numbers.
+
+**Part 1 — Traceroute and Hop Table (75 min)**
+
+1. Run `traceroute <server-IP>` from your laptop 3 times. Screenshot all 3 outputs.
+2. For every hop across all 3 runs, fill in a hand-written table:
+
+| Hop # | IP Address | Avg RTT (ms) | In all 3 runs? | Hypothesized device type |
+|---|---|---|---|---|
+
+3. Which hop has the highest RTT? Which has the most variance across runs? One sentence each.
+
+**Part 2 — Ping Statistics (45 min)**
+
+4. Run `ping <server-IP> -c 50`. Screenshot the full output including the summary. Record min, avg, max, mdev. Calculate the coefficient of variation (mdev ÷ avg × 100) by hand.
+5. Run the same test at a second time of day. Record both sets and compare coefficients of variation.
+
+**Part 3 — Network Map and Latency Gap Analysis (60 min)**
+
+6. Draw a physical network map on paper: your laptop → each hop → GPU server. Label each link with measured RTT, hypothesized device type, and IP address. Mark where the campus network ends and the internet begins.
+7. For each of your 15 prompts, calculate the "unexplained gap": mean benchmark latency − (ping avg RTT ÷ 1000). Hand-write these 15 values.
+8. Write a typed paragraph (200–250 words) breaking the gap into at least 4 distinct factors with estimated time contributions specific to this system (e.g., "FastAPI parsing," "model tokenization," "GPU forward pass"). Factors must roughly sum to the gap. Word count at bottom.
+
+**Oral Check-in (3:30 PM):** The mentor points to one hop on your network map and asks: "What is this device and how do you know?"
+
+**Deliverable Checklist:**
+- [ ] 3 `traceroute` screenshots
+- [ ] Hand-written hop table (photographed)
+- [ ] 2 ping run screenshots with coefficient of variation calculations
+- [ ] Physical network map (hand-drawn, labeled) (photographed)
+- [ ] 15 latency gap calculations (paper)
+- [ ] Typed latency gap explanation (200–250 words, word count at bottom)
+
+---
+
+### Thursday Jul 9 — Morning (9:00 AM – 12:00 PM)
+**Slot: Progress report ✅ — TASK ASSIGNED**
+
+#### Task: The Performance Report — Writing for a Principal, Defending to a Peer *(Part 1 of 2)*
+
+**Concept:** Research has no value unless it can be communicated. You synthesize two days of data into a written report, then defend every number in a structured peer cross-examination.
+
+**Part 1 — Data Audit (60 min)**
+
+1. Lay out all your data from Jul 7 and Jul 8. Before writing, fill in a "data audit" table — every statistic you plan to cite must have a source:
+
+| Statistic | Exact Value | Source (which day, which table, which row) |
+|---|---|---|
+
+List at least 12 statistics. Any number whose source column you cannot fill in cannot appear in your report.
+
+2. Write a hand-written report outline: at least 4 sections with at least 3 sub-points each.
+
+**Part 2 — First Draft (120 min)**
+
+3. Write the first draft by hand on paper. Target 450–550 words. Addressed to a school principal: *"Should our district pay to deploy this AI system for classroom use? Is it fast and reliable enough?"*
+
+Must include:
+- One paragraph summarizing system performance (cite 3+ specific numbers)
+- One paragraph on network reliability (cite ping results and variance)
+- One paragraph on evaluation limitations (what you could not measure)
+- One paragraph with your recommendation (yes/no/maybe, justified by data)
+- One hand-drawn chart attached to the report
+
+**Oral Check-in (end of morning):** The mentor reads one sentence from your draft and asks: "Which specific row in which table did this sentence come from?"
+
+**Deliverable Checklist:**
+- [ ] Data audit table (12+ statistics with sources) (paper, photographed)
+- [ ] Hand-written report outline (photographed)
+- [ ] Hand-written first draft (photographed)
+- [ ] Hand-drawn chart attached to draft (photographed)
+
+---
+
+### Thursday Jul 9 — Afternoon (1:00 PM – 4:00 PM)
+**Slot: Research work ✅ — TASK ASSIGNED**
+
+#### Task: The Performance Report — Cross-Examination and Final Revision *(Part 2 of 2, continues Jul 9 Morning)*
+
+**This session requires your hand-written draft from this morning.**
+
+**Part 3 — Type and Peer Cross-Examination (120 min)**
+
+1. Type your report. Word count must appear at the bottom. Must be 450–550 words — revise until in range.
+2. Structured peer cross-examination: find a partner. Take turns as "author" and "examiner." The examiner challenges every number:
+   - "Where does this number come from? Show me in your raw data."
+   - "What evidence supports this claim? Could the opposite be true?"
+   - "What would change your recommendation? What is the weakest assumption here?"
+   The examiner writes every question asked and every answer given (brief notes). This is a deliverable. Both sign it.
+
+**Part 4 — Revision Memo and Final Visual (60 min)**
+
+3. Write a revision memo (100–150 words): what did the cross-examination reveal as weak? What did you change and why? What did you defend and why?
+4. Create a clean hand-drawn one-page summary visual suitable for a slide — key findings displayed visually, not as text bullets. Label everything. This is what a principal could understand in 30 seconds.
+
+**Oral Check-in (3:30 PM):** "Read me one finding from your report. Now explain it without looking at your slides or notes."
+
+**Deliverable Checklist:**
+- [ ] Typed final report (450–550 words, word count at bottom)
+- [ ] Cross-examination record (questions + answers, both signed)
+- [ ] Typed revision memo (100–150 words)
+- [ ] Hand-drawn one-page summary visual (photographed)
+
+---
+
+### Friday Jul 10 — Morning (9:00 AM – 12:00 PM)
+**Slot: Research work ✅ — TASK ASSIGNED**
+
+#### Task: Threat Model Construction — Finding Every Hole Before the Attacker Does *(Part 1 of 2)*
+
+**Concept:** Professional threat modeling is systematic. Today you apply the STRIDE framework to identify, classify, and prioritize every vulnerability in the system before running a single exploit.
+
+**Part 1 — STRIDE Framework Study (60 min)**
+
+1. Look up STRIDE using OWASP or Microsoft's documentation (no AI). Write on paper what each letter stands for and a 2-sentence explanation with one everyday-technology example (not from this project):
+   S · T · R · I · D · E
+
+2. Look up the DREAD scoring model (Damage, Reproducibility, Exploitability, Affected Users, Discoverability). Record all 5 dimensions and their scoring scale.
+
+**Part 2 — Component Inventory and STRIDE Analysis (120 min)**
+
+3. List every distinct component in the current non-secure system (minimum 6). For each: what it does, what data it holds, what happens if compromised.
+4. For each component, go through all 6 STRIDE categories. Fill in a large table on paper (minimum 20 rows total). Vague entries like "could be hacked" are not acceptable — each threat must be specific (e.g., "Attacker intercepts JSON on port 8000 and changes `draft_tokens[2]` from 412 to 9999").
+
+**Oral Check-in (end of morning):** The mentor picks one row from your STRIDE table and asks you to explain the specific threat in detail.
+
+**Deliverable Checklist:**
+- [ ] Hand-written STRIDE definitions with examples (photographed)
+- [ ] DREAD dimensions and scale (paper)
+- [ ] 6+ component inventory (paper)
+- [ ] STRIDE table (20+ rows, paper, photographed)
+
+---
+
+### Friday Jul 10 — Afternoon (1:00 PM – 4:00 PM)
+**Slot: Finalize section 4 + section 5 (independent) ❌ — NO TASK ASSIGNED**
+
+> This slot is reserved for finalizing your lesson sections 4 and 5 independently as specified in the program schedule. Complete that program requirement.
+
+---
+
+## WEEK 5 — Research & Course Materials · Jul 13–17
+
+---
+
+### Monday Jul 13 — Morning (9:00 AM – 12:00 PM)
+**Slot: Research work ✅ — TASK ASSIGNED**
+
+#### Task: Threat Model — DREAD Scoring, Priority Matrix, Code Read, and Attack Prediction *(Part 2 of 2, continues Jul 10 Morning)*
+
+**This session requires your STRIDE table from Jul 10 Morning.**
+
+**Part 3 — DREAD Scoring and Priority Matrix (90 min)**
+
+1. Select your 10 most credible threats from the STRIDE table. For each, score all 5 DREAD dimensions (1–10 each) and calculate a total score. Show all scoring on paper.
+2. Plot these 10 threats on a 2×2 priority matrix: X-axis = Exploitability, Y-axis = Damage Potential. Label each dot. High-right quadrant = fix immediately.
+
+**Part 4 — Code Read and Prediction (90 min)**
+
+3. Open `attacker_mitm.py`. Read it completely without running it. Answer on paper:
+   - Which STRIDE category does this attack fall under?
+   - What is the exact mathematical operation applied to token IDs? Write the formula.
+   - At the default tampering rate, how many of the 5 draft tokens will be modified per request on average? Show the calculation.
+   - Which row in your STRIDE table does this attack correspond to? Write the row number.
+
+4. Write your prediction: *At the default tampering rate, what acceptance rate do you expect, and why?* Sign and date this — you will verify it in the next session.
+
+**Oral Check-in (end of morning):** "Which cell in your priority matrix has the highest combined score? Why?"
+
+**Deliverable Checklist:**
+- [ ] DREAD scoring table for 10 threats (paper, photographed)
+- [ ] 2×2 priority matrix (paper, photographed)
+- [ ] Written answers to 4 code-read questions (paper)
+- [ ] Signed and dated acceptance rate prediction
+
+---
+
+### Monday Jul 13 — Afternoon (1:00 PM – 4:00 PM)
+**Slot: Research work ✅ — TASK ASSIGNED**
+
+#### Task: Execute, Measure, and Explain the Attack *(Part 1 of 2)*
+
+**This session requires your signed prediction from this morning.**
+
+**Part 1 — Baseline Re-run (30 min)**
+
+1. Run `benchmark.py` directly to the server (no attacker). Record results. Screenshot. This is today's clean baseline — yesterday's data cannot substitute.
+
+**Part 2 — Attack at Three Intensity Levels (150 min)**
+
+For tampering percentages **10%, 50%, 100%** (three levels this afternoon, two tomorrow morning):
+
+For each level:
+- Set the tampering rate in `attacker_mitm.py`
+- Start attacker on port 8001
+- Point client at port 8001
+- Run full `benchmark.py`
+- Screenshot results
+- Stop attacker
+- Run `nvidia-smi` and screenshot
+
+Record in a master hand-written table:
+
+| Tampering % | Mean Latency | Mean Acc. Rate | # Prompts with 0% Acc. | GPU Util. % |
+|---|---|---|---|---|
+| 0% (baseline) | | | | |
+| 10% | | | | |
+| 50% | | | | |
+| 100% | | | | |
+
+**Oral Check-in (3:30 PM):** "What acceptance rate did you observe at 50% tampering, and how does that compare to your prediction from this morning?"
+
+**Deliverable Checklist:**
+- [ ] Clean baseline screenshot
+- [ ] 3 benchmark screenshots (10%, 50%, 100%)
+- [ ] 3 `nvidia-smi` screenshots
+- [ ] Partial master table (4 rows filled) (paper, photographed)
+
+---
+
+### Tuesday Jul 14 — Morning (9:00 AM – 12:00 PM)
+**Slot: Research work ✅ — TASK ASSIGNED**
+
+#### Task: Execute the Attack — Complete Data, Graphing, and Analysis *(Part 2 of 2, continues Jul 13 Afternoon)*
+
+**This session requires your partial master table from yesterday afternoon.**
+
+**Part 3 — Two Remaining Intensity Levels (60 min)**
+
+1. Run the attack at **0% (verify)** and **25%** tampering using the same process as yesterday. Add these rows to your master table (now 6 rows: 0%, 10%, 25%, 50%, 100%, and your re-verified 0%).
+
+**Part 4 — Graphing and Cost Analysis (90 min)**
+
+2. Hand-draw a line graph: X-axis = tampering % (0, 10, 25, 50, 100), Y-axis = mean acceptance rate. Describe the curve shape in one sentence.
+3. Calculate the "cost per attack hour" for each tampering level:
+   - (1 − acceptance rate) × 100 requests/hour × 2 seconds/rejected request = wasted GPU seconds/hour
+   - ÷ 3600 = wasted GPU hours/hour
+   - × $3.50 = cost to server operator per hour
+   Show all arithmetic. Add a cost column to your master table.
+
+**Part 5 — Prediction Comparison and Server Log Analysis (30 min)**
+
+4. Pull out your signed prediction from yesterday morning. Compare to your actual results. Write a 3-paragraph formal response:
+   - What you predicted and why
+   - What actually happened (quote specific numbers)
+   - Why there was a discrepancy, or what reasoning led you to the correct answer
+
+5. Write down every line the server printed during one attack run. Does the server know it is being attacked? Describe what information the server has vs. what it does not have.
+
+**Oral Check-in (end of morning):** "Walk me through the cost calculation at 25% tampering, step by step."
+
+**Deliverable Checklist:**
+- [ ] 2 more benchmark screenshots (25% + re-verified 0%)
+- [ ] Completed 6-row master table with cost column (paper, photographed)
+- [ ] Hand-drawn line graph (photographed)
+- [ ] Cost arithmetic shown on paper (photographed)
+- [ ] Typed 3-paragraph prediction comparison
+- [ ] Hand-written server log lines + analysis paragraph
+
+---
+
+### Tuesday Jul 14 — Afternoon (1:00 PM – 4:00 PM)
+**Slot: Lesson teaching materials / refine your module design (with Dr. Chen) ❌ — NO TASK ASSIGNED**
+
+> This slot is reserved for lesson teaching materials and module design refinement with Dr. Chen. Attend that session.
+
+---
+
+### Wednesday Jul 15 — Morning (9:00 AM – 12:00 PM)
+**Slot: Research work ✅ — TASK ASSIGNED**
+
+#### Task: Hash Functions by Hand — Building Cryptographic Intuition from Scratch *(Part 1 of 2)*
+
+**Concept:** Cryptographic functions seem magical until you understand the mathematical intuition behind them. Today you build that intuition by constructing and breaking a toy hash function by hand.
+
+**Part 1 — Toy Hash Construction and Avalanche Testing (90 min)**
+
+**Toy Hash Algorithm (paper arithmetic only — no computer):**
+1. Convert each character in your input to its ASCII decimal value (use a printed ASCII table)
+2. Multiply each value by its 1-indexed position: char 1 × 1, char 2 × 2, etc.
+3. Sum all the products
+4. Divide by 97 (prime) and record the remainder — this is your hash
+
+Apply this to: (a) your full name, (b) your name with one character changed, (c) your name with only the first character changed to a space, (d) your name with the first and second characters swapped. Show every arithmetic step on paper.
+
+Fill in the table:
+
+| Input | Full calculation (every step) | Final Hash | Δ from original |
+|---|---|---|---|
+
+Write a 4-sentence analysis: Does your toy hash exhibit the avalanche effect? How easily could an attacker find two inputs with the same hash?
+
+**Part 2 — Breaking the Toy Hash (60 min)**
+
+5. Find two different strings that produce the same hash (a "collision"). Try by hand or with simple arithmetic. Record both strings and show that they produce the same output.
+6. Explain in 3 sentences why this collision is easy to find and why it would be catastrophic in a security system.
+
+**Part 3 — SHA-256 Properties Research (30 min)**
+
+7. Look up SHA-256 using NIST FIPS 180-4 or a university cryptography lecture (not AI). Record: output size in bits, block size, number of rounds, whether collisions have been found, estimated brute-force time at 10¹⁵ hashes/second.
+
+**Oral Check-in (end of morning):** Show your two collision strings. Explain why this breaks this project's security.
+
+**Deliverable Checklist:**
+- [ ] Toy hash arithmetic for all 4 experiments (paper, every step, photographed)
+- [ ] 4-row experiment table (photographed)
+- [ ] Typed 4-sentence avalanche analysis
+- [ ] Two collision strings with proof (paper, photographed)
+- [ ] Typed 3-sentence collision danger explanation
+- [ ] SHA-256 properties recorded with source cited
+
+---
+
+### Wednesday Jul 15 — Afternoon (1:00 PM – 4:00 PM)
+**Slot: Lesson teaching materials / refine your module design (with Dr. Chen) ❌ — NO TASK ASSIGNED**
+
+> This slot is reserved for lesson teaching materials and module design refinement with Dr. Chen. Attend that session.
+
+---
+
+### Thursday Jul 16 — Morning (9:00 AM – 12:00 PM)
+**Slot: Research work ✅ — TASK ASSIGNED**
+
+#### Task: Hash Functions — HMAC Code Reading and Plain-English Translation *(Part 2 of 2, continues Jul 15 Morning)*
+
+**This session requires your SHA-256 properties and toy-hash findings from yesterday morning.**
+
+**Part 4 — SHA-256 vs. Toy Hash Comparison (30 min)**
+
+1. For each of your 4 toy-hash experiments, write one sentence comparing how SHA-256 would behave differently (stronger avalanche? harder collision? more position-sensitive?).
+
+**Part 5 — HMAC Code Reading and Annotation (75 min)**
+
+2. Open `crypto_auth.py`. Read every line. For each line involving HMAC generation, verification, or key handling, copy the line on paper and write a plain-English annotation: what it does and why it is necessary — as if explaining to a 10th grader.
+3. Write a 5-step English recipe for how `crypto_auth.py` signs a message and how `server_secure.py` verifies it. No code — prose only. A student who reads your recipe should understand HMAC without seeing the script.
+
+**Part 6 — Security Connection (45 min)**
+
+4. Write a 5-sentence analogy explaining HMAC to a high school student using an everyday object (wax seals, tamper-evident packaging, notarized documents — your choice).
+5. Connect your avalanche finding to this system: *Why does HMAC need the avalanche property? What would happen if the hash function had easy collisions like your toy hash?* Write 4 sentences.
+
+**Oral Check-in (end of morning):** "Walk me through your 5-step HMAC recipe without looking at your notes."
+
+**Deliverable Checklist:**
+- [ ] Typed SHA-256 vs. toy hash comparison (4 sentences)
+- [ ] Hand-written annotated code lines from `crypto_auth.py` (photographed)
+- [ ] Typed 5-step HMAC recipe in plain English
+- [ ] Typed 5-sentence everyday-life analogy
+- [ ] Typed 4-sentence avalanche-to-security connection
+
+---
