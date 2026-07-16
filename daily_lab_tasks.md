@@ -1182,3 +1182,89 @@ Write a 4-sentence analysis: Does your toy hash exhibit the avalanche effect? Ho
 - [ ] Typed 4-sentence avalanche-to-security connection
 
 ---
+
+
+
+### Thursday Jul 16 — Afternoon (1:00 PM – 4:00 PM)
+**Slot: Lesson teaching materials / refine your module design (with Dr. Chen) ❌ — NO TASK ASSIGNED**
+
+> This slot is reserved for lesson teaching materials and module design refinement with Dr. Chen. Attend that session.
+
+---
+
+### Friday Jul 17 — Morning (9:00 AM – 12:00 PM)
+**Slot: Research work ✅ — TASK ASSIGNED**
+
+#### Task: Defense Verification — Six Scenarios and Fail-Secure Analysis *(Part 1 of 2)*
+
+**Concept:** A defense that works in one scenario may not work in all scenarios. Today you test the cryptographic defense systematically across 6 conditions and read the source code to understand exactly how it blocks attacks.
+
+**Part 1 — Six Test Scenarios (90 min)**
+
+For each scenario, write your prediction before running, then run, screenshot, and compare.
+
+- **Scenario A:** `edge_secure.py` → `server_secure.py` directly (correct key, no attacker)
+- **Scenario B:** `edge_secure.py` → attacker port 8001 → `server_secure.py`
+- **Scenario C:** `edge_secure.py` with one character changed in the key → `server_secure.py` directly
+- **Scenario D:** `edge_secure.py` with no HMAC field at all (remove signature from JSON) → `server_secure.py`
+- **Scenario E:** Attacker with token tampering commented out (proxy only, signature untouched) → `server_secure.py`
+- **Scenario F:** Fully valid correctly-signed request but with one extra unexpected JSON field added
+
+Fill in the master table:
+
+| Scenario | Your Prediction | Actual Result | Match? | Explanation of discrepancy |
+|---|---|---|---|---|
+
+**Part 2 — Source Code Annotation (90 min)**
+
+2. Open `server_secure.py`. Read every line. For each line in the HMAC verification logic, copy it on paper and write: (a) what it does, (b) what would happen if this line were deleted, (c) which scenario it blocks.
+
+**Oral Check-in (end of morning):** "Point to Scenario D in your table. Why does the server behave this way? Show me the specific lines."
+
+**Deliverable Checklist:**
+- [ ] 6 labeled screenshots (one per scenario)
+- [ ] Master 6-row prediction vs. actual table (paper, photographed)
+- [ ] Hand-written annotated code lines from `server_secure.py` (photographed)
+
+---
+
+### Friday Jul 17 — Afternoon (1:00 PM – 4:00 PM)
+**Slot: Lesson teaching materials / refine your module design (with Dr. Chen) ❌ — NO TASK ASSIGNED**
+
+> This slot is reserved for lesson teaching materials and module design refinement with Dr. Chen. Attend that session.
+
+---
+
+## WEEK 6 — Finalize, Poster & Microteaching · Jul 20–24
+
+> **Note:** All of Week 6 is occupied by program-required activities — RET poster completion, course material finalization with Dr. Chen, microteaching preparation, and microteaching presentations. **No research tasks are assigned this week.** The sessions below describe what each slot is for so you know where to be.
+
+---
+
+### Monday Jul 20
+- **Morning:** Complete your RET poster (one per teacher/group) ❌
+- **Afternoon:** Finalize course materials & module design with Dr. Chen ❌
+
+### Tuesday Jul 21
+- **Morning:** Complete your RET poster (one per teacher/group) ❌
+- **Afternoon:** Finalize course materials & module design with Dr. Chen ❌
+
+### Wednesday Jul 22
+- **Morning:** Prepare your microteaching presentation ❌
+- **Afternoon:** Prepare your microteaching presentation with Dr. Chen ❌
+
+### Thursday Jul 23
+- **Morning:** Prepare your microteaching presentation with Dr. Chen ❌
+- **Afternoon:** Prepare your microteaching presentation with Dr. Chen ❌
+
+### Friday Jul 24
+- **Morning:** Microteaching presentations (30 + 10 min Q&A per teacher) ❌
+- **Afternoon:** Microteaching presentations (cont.) + lunch & closing + group photo ❌
+  - Submit: Module design + course materials + poster
+  - Submit: Post-program survey
+
+---
+
+*Tasks designed for NSF RET 2026 — EdgeAI Site, University of Nevada, Reno.*
+*Mentors: Dr. Xiaoxue Zhang and Mr. Md Omer Danish*
+*Program Dates: June 15 – July 24, 2026*
